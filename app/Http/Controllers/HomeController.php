@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('layouts.master');
     }
+    public function breed(){
+        return view('layouts.breed-management');
+    }
+    public function process(){
+        return view('layouts.process-management');
+    }
 }

@@ -19,3 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/breed-management', 'HomeController@breed')->name('breed-management');
+Route::get('/process-management', 'HomeController@process')->name('process-management');
