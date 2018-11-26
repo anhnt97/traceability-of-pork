@@ -9,7 +9,7 @@ class Batch extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'amount', 'last_treatment', 'farm_id', 'import_id', 'breed', 'breed_description', 'origin';
+        'amount', 'last_treatment', 'farm_id', 'import_id', 'breed', 'breed_description', 'origin'
     ];
 
     public function farm()
