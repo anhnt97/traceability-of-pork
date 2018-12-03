@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Spatie\Activitylog\Models\Activity;
@@ -40,9 +41,10 @@ class HomeController extends Controller
     }
     public function activityLog($userModel,$someContentModel){
         activity()
-            ->causedBy($userModel)
-            ->performedOn($someContentModel)
-            ->log('edited');
+            ->causedBy(auth()->user())
+            ->log('User updated');
+        $lastActivity = Activity::all()->last();
+        $lastActivity->causer;
     }
     public function getActivityLog(){
         $lastActivity = Activity::all()->last(); //returns the last logged activity

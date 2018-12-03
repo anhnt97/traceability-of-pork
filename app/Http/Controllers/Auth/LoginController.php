@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Activitylog\Models\Activity;
 
 class LoginController extends Controller
 {
@@ -20,12 +22,21 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
+     * @return string
      */
-    protected $redirectTo = '/home';
+    protected function redirectTo()
+    {
+        $log = "User ".Auth::user()->name." logged in";
+        activity()
+            ->causedBy(auth()->user())
+            ->withProperties(['email' => Auth::user()->email])
+            ->log($log);
+        $lastActivity = Activity::all()->last();
+        $lastActivity->causer;
+        return '/home';
+    }
 
     /**
      * Create a new controller instance.

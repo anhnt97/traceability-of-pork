@@ -100,6 +100,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{auth()->logout()}}" class="nav-link">
+                            <i class="fa fa-circle-o nav-icon"></i>
+                            <p>Đăng xuất</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
