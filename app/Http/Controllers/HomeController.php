@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\Models\Activity;
 
 class HomeController extends Controller
 {
@@ -37,4 +38,15 @@ class HomeController extends Controller
         $farms = DB::table('farms')->paginate(5);
         return view('layouts.dashboard',['farms' => $farms]);
     }
+    public function activityLog($userModel,$someContentModel){
+        activity()
+            ->causedBy($userModel)
+            ->performedOn($someContentModel)
+            ->log('edited');
+    }
+    public function getActivityLog(){
+        $lastActivity = Activity::all()->last(); //returns the last logged activity
+        $lastActivity->description;
+    }
+
 }
