@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('layouts.master');
+        return view('layouts.dashboard');
     }
     public function breed(){
         $batches = DB::table('batches')->paginate(10);
