@@ -43,8 +43,7 @@
         </form>
 -->
         <div class="log-out-div col-md-10">
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-
+            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
         </div>
     </nav>
@@ -106,12 +105,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{auth()->logout()}}" class="nav-link">
-                            <i class="fa fa-circle-o nav-icon"></i>
-                            <p>Đăng xuất</p>
-                        </a>
                     </li>
                 </ul>
             </nav>
