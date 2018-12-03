@@ -24,4 +24,5 @@ Route::get('/breed-management/get-batches/{batchId}', 'BreedManagementController
 Route::get('/breed-management/get-info-pig/{pigId}', 'BreedManagementController@getInfoPigBasic');
 Route::get('/breed-management/get-info-treatment/{pigId}', 'BreedManagementController@getInfoTreatmentByPig');
 Route::get('/breed-management/get-list-equipment', 'BreedManagementController@getListEquipment');
+Route::get('/breed-management/get-list-food', 'BreedManagementController@getListFood');
 Route::get('/process-management', 'HomeController@process')->name('process-management');

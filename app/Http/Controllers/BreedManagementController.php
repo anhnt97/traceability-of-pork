@@ -25,7 +25,10 @@ class BreedManagementController extends Controller
     }
     public function getListEquipment(){
         $equipments = DB::table('equipments')->paginate(10);
-        return view('layouts.breed-management',['equipment' => $equipments]);
+        return view('layouts.breed-management',['equipments' => $equipments]);
     }
-
+    public function getListFood(){
+        $foods = DB::table('foods')->paginate(10);
+        return view('layouts.breed-management',['foods' => $foods]);
+    }
 }
