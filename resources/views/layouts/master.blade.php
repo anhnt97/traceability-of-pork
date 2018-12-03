@@ -30,6 +30,7 @@
         </ul>
 
         <!-- SEARCH FORM -->
+<!--
         <form class="form-inline ml-3">
             <div class="input-group input-group-sm">
                 <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
@@ -40,6 +41,12 @@
                 </div>
             </div>
         </form>
+-->
+        <div class="log-out-div col-md-10">
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+        </div>
     </nav>
     <!-- /.navbar -->
 
