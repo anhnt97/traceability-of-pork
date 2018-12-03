@@ -20,7 +20,7 @@ class CheckAdmin
         {
             return $next($request);
         }else{
-            return redirect('/');
+            return redirect('/home');
         }
     }
 }
