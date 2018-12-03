@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -30,5 +31,9 @@ class HomeController extends Controller
     }
     public function process(){
         return view('layouts.process-management');
+    }
+    public function getListFarm(){
+        $farms = DB::table('farms')->paginate(5);
+        return view('layouts.dashboard',['farms' => $farms]);
     }
 }
