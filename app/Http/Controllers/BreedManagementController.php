@@ -31,4 +31,16 @@ class BreedManagementController extends Controller
         $foods = DB::table('foods')->paginate(10);
         return view('layouts.breed-management',['foods' => $foods]);
     }
+    public function getFeedByBatch($batchId){
+        $feeds = DB::table('feeds')->where('batch_id','=',$batchId);
+        return view('layouts.breed-management',['feeds' => $feeds]);
+    }
+    public function getHandleDeadPigs($batchId){
+        $handleDead = DB::table('handle_dead_pigs')->where('batch_id','=',$batchId);
+        return view('layouts.breed-management',['feeds' => $handleDead]);
+    }
+    public function getSellByBatch($batchId){
+        $sells = DB::table('sells')->where('batch_id','=',$batchId);
+        return view('layouts.breed-management',['sells' => $sells]);
+    }
 }
