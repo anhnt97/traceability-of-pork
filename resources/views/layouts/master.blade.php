@@ -12,9 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    
+    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -80,35 +83,25 @@
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="{{route('dashboard')}}" class="nav-link">
-                            <i class="nav-icon fa fa-th"></i>
+                        <a href="{{route('dashboard')}}" class="nav-link active">
+                            <i class="fa fa-circle-o nav-icon"></i>
+
                             <p>
                                 Thống kê chung
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview menu-close">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fa fa-dashboard"></i>
-                            <p>
-                                Quản lý lô heo
-                                <i class="right fa fa-angle-left"></i>
-                            </p>
+                    <li class="nav-item">
+                        <a href="{{route('process-management')}}" class="nav-link">
+                            <i class="fa fa-circle-o nav-icon"></i>
+                            <p>Giới thiệu quy trình</p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('process-management')}}" class="nav-link active">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Giám sát quy trình</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('breed-management')}}" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>Giám sát chăn nuôi</p>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="nav-item">
+                         <a href="{{route('breed-management')}}" class="nav-link">
+                            <i class="fa fa-circle-o nav-icon"></i>
+                            <p>Giám sát chăn nuôi</p>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -144,6 +137,10 @@
 <script src="/js/app.js"></script>
 <script>
 //    $.widget.bridge('uibutton', $.ui.button);
+    $(document).ready(function() {
+        $('#table-process').DataTable();
+        
+    } );
 </script>
 </body>
 </html>
