@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pig extends Authenticatable
+class Pig extends Model
 {
     /**
      * The attributes that are mass assignable.
