@@ -12,12 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -103,6 +98,24 @@
                             <p>Giám sát chăn nuôi</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                         <a href="{{route('glf')}}" class="nav-link">
+                            <i class="fa fa-circle-o nav-icon"></i>
+                            <p>Danh sách trang trại</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                         <a href="{{route('glfo')}}" class="nav-link">
+                            <i class="fa fa-circle-o nav-icon"></i>
+                            <p>Danh sách thức ăn</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                         <a href="{{route('gle')}}" class="nav-link">
+                            <i class="fa fa-circle-o nav-icon"></i>
+                            <p>Danh sách thiết bị</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -135,12 +148,20 @@
     <!-- /.control-sidebar -->
 </div>
 <script src="/js/app.js"></script>
+
+<!--Import jQuery before export.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+
+    <!--Data Table-->
+    <script type="text/javascript"  src=" https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script>
-//    $.widget.bridge('uibutton', $.ui.button);
     $(document).ready(function() {
-        $('#table-process').DataTable();
+        $('.table').DataTable();
         
     } );
 </script>
+
 </body>
 </html>

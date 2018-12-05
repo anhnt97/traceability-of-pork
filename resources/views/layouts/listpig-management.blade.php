@@ -12,7 +12,7 @@
 </div>
 <div>
     <ul class="nav nav-tabs">
-        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Quản lí theo lô</a></li>
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Danh sách cá thể</a></li>
     </ul>
 
     <div class="tab-content">
@@ -21,26 +21,26 @@
                 <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">Farm ID</th>
-                      <th scope="col">Số lượng</th>
-                      <th scope="col">Trạng thái</th>
-                      <th scope="col">Giống</th>
-                      <th scope="col">Mô tả giống</th>
-                      <th scope="col">Địa chỉ</th>
+                      <th scope="col">Cân nặng</th>
+                      <th scope="col">Tình trạng</th>
+                      <th scope="col">Mã QR</th>
+                      <th scope="col">Thời gian xuất chuồng</th>
                       <th scope="col">Chi tiết</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($datas as $data)
+                    @foreach($pigs as $data)
                     <tr>
                     <td>{{$data->id}}</td> 
-                    <td>{{$data->farm_id}}</td> 
-                    <td>{{$data->amount}}</td> 
+                    <td>{{$data->weight}}</td> 
                     <td>{{$data->status}}</td> 
-                    <td>{{$data->breed}}</td> 
-                    <td>{{$data->breed_description}}</td> 
-                    <td>{{$data->origin}}</td> 
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
+                    <td>{{$data->qr_code}}</td> 
+                    @if ($data->sell_at == null)
+                    <td>Chưa bán</td> 
+                    @else
+                    <td>{{$data->sell_at}}</td> 
+                    @endif
+                    <td><a href="/breed-management/get-info-pig/{{$data->id}}">Xem</a></td> 
                   </tr>
                   @endforeach
                 </tbody>

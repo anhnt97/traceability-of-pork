@@ -30,14 +30,14 @@ class HomeController extends Controller
     }
     public function breed(){
         $batches = DB::table('batches')->paginate(10);
-        return view('layouts.breed-management',['batches' => $batches]);
+        return view('layouts.breed-management',['datas' => $batches]);
     }
     public function process(){
         return view('layouts.process-management');
     }
     public function getListFarm(){
         $farms = DB::table('farms')->paginate(5);
-        return view('layouts.dashboard',['farms' => $farms]);
+        return view('layouts.list-farm',['farms' => $farms]);
     }
     public function activityLog($userModel,$someContentModel){
         activity()

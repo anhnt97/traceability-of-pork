@@ -5,14 +5,14 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Giám sát chăn nuôi</h1>
+                <h1 class="m-0 text-dark">Danh sách thức ăn</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
 <div>
     <ul class="nav nav-tabs">
-        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Quản lí theo lô</a></li>
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Thông tin thức ăn</a></li>
     </ul>
 
     <div class="tab-content">
@@ -21,26 +21,22 @@
                 <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">Farm ID</th>
+                      <th scope="col">Tên thức ăn</th>
                       <th scope="col">Số lượng</th>
-                      <th scope="col">Trạng thái</th>
-                      <th scope="col">Giống</th>
-                      <th scope="col">Mô tả giống</th>
+                      <th scope="col">Ngày hết hạn</th>
+
                       <th scope="col">Địa chỉ</th>
-                      <th scope="col">Chi tiết</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($datas as $data)
                     <tr>
                     <td>{{$data->id}}</td> 
-                    <td>{{$data->farm_id}}</td> 
+                    <td>{{$data->name}}</td> 
                     <td>{{$data->amount}}</td> 
-                    <td>{{$data->status}}</td> 
-                    <td>{{$data->breed}}</td> 
-                    <td>{{$data->breed_description}}</td> 
-                    <td>{{$data->origin}}</td> 
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
+                    <td>{{$data->expiry_at}}</td> 
+                    <td>{{$data->store_address}}</td> 
                   </tr>
                   @endforeach
                 </tbody>

@@ -21,7 +21,7 @@
 
     <div class="tab-content">
         <div id="home" class="tab-pane fade in active show">
-            <table id="table-process" class="table">
+            <table class="table">
                 <thead>
                     <tr>
                       <th scope="col">Tên quy định</th>
