@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Commentation;
+use App\Models\Batch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Activitylog\Models\Activity;
@@ -73,6 +74,7 @@ class ProcessManagementController extends Controller
             ->log($log);
         $lastActivity = Activity::all()->last();
         $lastActivity->causer;
+        return redirect()->back()->with('success','create comment success!');
     }
     public function updateComment(Request $request){
         $idComment = $request['id'];
@@ -130,5 +132,14 @@ class ProcessManagementController extends Controller
             ->log($log);
         $lastActivity = Activity::all()->last();
         $lastActivity->causer;
+        return redirect()->back()->with('success','update comment success!');
+    }
+    public function updateStatusBatch(Request $request){
+        $batchId = $request['batchId'];
+        $statusBatch = $request['status'];
+        $batch = Batch::where('id', $batchId)->update([
+           'status' => $statusBatch
+        ]);
+        return redirect()->back()->with('success','update batch success!');
     }
 }

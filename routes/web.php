@@ -26,3 +26,8 @@ Route::get('/breed-management/get-info-treatment/{pigId}', 'BreedManagementContr
 Route::get('/breed-management/get-list-equipment', 'BreedManagementController@getListEquipment');
 Route::get('/breed-management/get-list-food', 'BreedManagementController@getListFood');
 Route::get('/process-management', 'HomeController@process')->name('process-management');
+Route::put('/process-management/update-status-batch', 'ProcessManagement@updateStatusBatch');
+Route::post('/process-management/create-comment' , 'ProcessManagement@createComment');
+Route::put('/process-management/update-comment', 'ProcessManagement@updateComment');
+Route::get('/activity-log', 'ActivityLogController@index');
+Route::get('/activity-log/{logName}', 'ActivityLogController@searchLogByName');
