@@ -39,16 +39,8 @@ class HomeController extends Controller
         $farms = DB::table('farms')->paginate(5);
         return view('layouts.list-farm',['farms' => $farms]);
     }
-    public function activityLog($userModel,$someContentModel){
-        activity()
-            ->causedBy(auth()->user())
-            ->log('User updated');
-        $lastActivity = Activity::all()->last();
-        $lastActivity->causer;
-    }
     public function getActivityLog(){
         $lastActivity = Activity::all()->last(); //returns the last logged activity
         $lastActivity->description;
     }
-
 }
