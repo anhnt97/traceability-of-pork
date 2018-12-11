@@ -74,11 +74,11 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column sidebar-menu" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item">
-                        <a href="{{route('dashboard')}}" class="nav-link active">
+                        <a href="{{route('dashboard')}}" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
                             <i class="fa fa-circle-o nav-icon"></i>
 
                             <p>
@@ -87,27 +87,27 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('process-management')}}" class="nav-link">
+                        <a href="{{route('process-management')}}" class="nav-link {{ request()->is('process-management') ? 'active' : '' }}">
                             <i class="fa fa-circle-o nav-icon"></i>
                             <p>Giới thiệu quy trình</p>
                         </a>
                     </li>
                     @if(auth::user()->role == 'admin' || auth::user()->role == 'staff')
                     <li class="nav-item">
-                         <a href="{{route('breed-management')}}" class="nav-link">
+                         <a href="{{route('breed-management')}}" class="nav-link {{ request()->is('breed-management') ? 'active' : '' }}">
                             <i class="fa fa-circle-o nav-icon"></i>
                             <p>Chăn nuôi</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                         <a href="{{route('glf')}}" class="nav-link">
+                         <a href="{{route('glf')}}" class="nav-link {{ request()->is('get-list-farm') ? 'active' : '' }}">
                             <i class="fa fa-circle-o nav-icon"></i>
                             <p>Danh sách trang trại</p>
                         </a>
                     </li>
                     @endif @if(auth::user()->role == 'admin')
                     <li class="nav-item">
-                         <a href="{{route('activity-log')}}" class="nav-link">
+                         <a href="{{route('activity-log')}}" class="nav-link {{ request()->is('activity-log') ? 'active' : '' }}">
                             <i class="fa fa-circle-o nav-icon"></i>
                             <p>Quản lý log</p>
                         </a>
@@ -122,11 +122,11 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        
+
         <!-- /.content-header -->
 
         <!-- Main content -->
-        
+
         @yield('content')
         <!-- /.content -->
     </div>
@@ -156,7 +156,7 @@
 <script>
     $(document).ready(function() {
         $('.table').DataTable();
-        
+
     } );
 </script>
 

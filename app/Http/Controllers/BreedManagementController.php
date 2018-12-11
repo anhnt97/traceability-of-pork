@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Food;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -67,5 +68,19 @@ class BreedManagementController extends Controller
     public function getSellByBatch($batchId){
         $sells = DB::table('sells')->where('batch_id','=',$batchId);
         return view('layouts.breed-management',['sells' => $sells]);
+    }
+    public function createFood(Request $request){
+        $food =  Food::create([
+            'name' => $request['name'],
+            '' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => 'user',
+        ]);
+        $activity = Activity::all()->last();
+
+        $activity->description; //returns 'created'
+        $activity->subject; //returns the instance of User that was created
+        $activity->changes;
+        return $user;
     }
 }
