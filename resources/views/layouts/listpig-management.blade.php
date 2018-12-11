@@ -48,8 +48,8 @@
                     <td>{{$data->sell_at}}</td> 
                     @endif
                     @if(auth::user()->role =='admin')
-                    <td><a href="/breed-management/get-info-pig/{{$data->id}}">Xem</a></td> 
-                    <td><a href="/breed-management/get-info-pig/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/feed/{{$data->batch_id}}">Xem</a></td> 
+                    <td><a href="/breed-management/treatment/{{$data->id}}">Xem</a></td> 
                     @endif
                     @if(auth::user()->role =='staff')
                     <td><a href="/breed-management/get-info-pig/{{$data->id}}">Nhập</a></td> 

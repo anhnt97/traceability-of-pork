@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Giám sát log</h1>
+                <h1 class="m-0 text-dark">Giám sát chăn nuôi</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -20,23 +20,25 @@
             <table class="table">
                 <thead>
                     <tr>
-                      <th scope="col">Tên log</th>
-                      <th scope="col">Mô tả</th>
-                      <th scope="col">Loại</th>
-                      <th scope="col">Người gây ra</th>
-                      <th scope="col">Thuộc tính</th>
-                      <th scope="col">Ngày tạo</th>
+                      <th scope="col">Tên thuốc</th>
+                      <th scope="col">Liều lượng</th>
+                      <th scope="col">Bác sĩ</th>
+                      <th scope="col">Lý do điều trị</th>
+                      <th scope="col">Kết quả</th>
+                      <th scope="col">Ngày bắt đầu</th>
+                      <th scope="col">Ngày kết thúc</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($activityLogAll as $data)
+                    @foreach($treatments as $data)
                     <tr> 
-                        <td>{{$data->log_name}}</td> 
-                        <td>{{$data->description}}</td> 
-                        <td>{{$data->causer_id}}</td> 
+                        <td>{{str_random(10)}}</td>
+                        <td>{{$data->dose}}</td> 
+                        <td>{{$data->doctor}}</td> 
                         <td>{{$data->reason}}</td> 
-                        <td>{{$data->properties}}</td> 
-                        <td>{{$data->created_at}}</td>
+                        <td>{{$data->result}}</td> 
+                        <td>{{$data->start_at}}</td> 
+                        <td>{{$data->finish_at}}</td> 
                     </tr>
                     @endforeach
                 </tbody>

@@ -49,12 +49,12 @@
                     <td>{{$data->amount}}</td> 
                     
                     @if(Auth::user()->role == 'admin')
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td>
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/breed-info/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/import-info/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/feed/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/vaccination/{{$data->id}}">Xem</a></td>
+                    <td><a href="/breed-management/antiseptic/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/sell/{{$data->id}}">Xem</a></td> 
                     @endif 
                     @if(Auth::user()->role == 'staff')
                     <td>{{$data->breed}}</td>

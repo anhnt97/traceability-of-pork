@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Giám sát log</h1>
+                <h1 class="m-0 text-dark">Giám sát chăn nuôi</h1>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -20,23 +20,23 @@
             <table class="table">
                 <thead>
                     <tr>
-                      <th scope="col">Tên log</th>
-                      <th scope="col">Mô tả</th>
-                      <th scope="col">Loại</th>
-                      <th scope="col">Người gây ra</th>
-                      <th scope="col">Thuộc tính</th>
-                      <th scope="col">Ngày tạo</th>
+                      <th scope="col">Số lượng</th>
+                      <th scope="col">Người bán</th>
+                      <th scope="col">Người mua</th>
+                      <th scope="col">Địa điểm mua</th>
+                      <th scope="col">Ngày điều trị cuối</th>
+                      <th scope="col">Ngày bán</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($activityLogAll as $data)
+                    @foreach($sells as $data)
                     <tr> 
-                        <td>{{$data->log_name}}</td> 
-                        <td>{{$data->description}}</td> 
-                        <td>{{$data->causer_id}}</td> 
-                        <td>{{$data->reason}}</td> 
-                        <td>{{$data->properties}}</td> 
-                        <td>{{$data->created_at}}</td>
+                        <td>{{$data->amount}}</td> 
+                        <td>{{$data->seller}}</td>
+                        <td>{{$data->buyer}}</td> 
+                        <td>{{$data->buyer_address}}</td> 
+                        <td>{{$data->last_treatment}}</td> 
+                        <td>{{$data->sell_at}}</td> 
                     </tr>
                     @endforeach
                 </tbody>
