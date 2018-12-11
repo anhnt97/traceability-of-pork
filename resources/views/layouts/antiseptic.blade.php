@@ -29,12 +29,12 @@
                 </thead>
                 <tbody>
                     @foreach($antiseptics as $data)
-                    <tr> 
-                        <td>{{$data->equipment_id}}</td> 
-                        <td>{{$data->insectiside}}</td>
-                        <td>{{$data->dose}}</td> 
-                        <td>{{$data->executor}}</td> 
-                        <td>{{$data->created_at}}</td> 
+                    <tr>
+                        <td>{{$data->equipment_id}}</td>
+                        <td>{{$data->insecticide}}</td>
+                        <td>{{$data->dose}}</td>
+                        <td>{{$data->executor}}</td>
+                        <td>{{$data->created_at}}</td>
                     </tr>
                     @endforeach
                 </tbody>
