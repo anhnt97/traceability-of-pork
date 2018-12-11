@@ -41,7 +41,7 @@
                     <td>{{$data->id}}</td> 
                     <td>{{$data->weight}}</td> 
                     <td>{{$data->status}}</td> 
-                    <td>{{$data->qr_code}}</td> 
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_QR">Xem</button></td> 
                     @if ($data->sell_at == null)
                     <td>Chưa bán</td> 
                     @else
@@ -143,5 +143,30 @@
         </div>
       </div>
     </div>
+
+
+    <div class="modal" id="myModal_QR">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Mã QR</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <img src="{{URL::asset('/img/Capture_qr.jpg')}}" height="200" width="200">
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
 </div>
 @endsection
