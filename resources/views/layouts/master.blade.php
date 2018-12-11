@@ -126,7 +126,7 @@
         <!-- /.content-header -->
 
         <!-- Main content -->
-
+        @include('layouts.flash-message')
         @yield('content')
         <!-- /.content -->
     </div>
@@ -156,7 +156,6 @@
 <script>
     $(document).ready(function() {
         $('.table').DataTable();
-
     } );
 </script>
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vaccination extends Model
 {
     protected $fillable = [
-        'name', 'dose', 'doctor', 'purpose', 'result',
+        'name', 'dose', 'doctor', 'purpose', 'result','batch_id'
     ];
 
     public function batch()

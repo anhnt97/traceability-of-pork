@@ -30,16 +30,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                    <td>{{$data->batch_id}}</td> 
-                    <td>{{$data->weight}}</td> 
-                    <td>{{$data->status}}</td> 
-                    <td>{{$data->qr_code}}</td> 
+                    <td>{{$data->batch_id}}</td>
+                    <td>{{$data->weight}}</td>
+                    <td>{{$data->status}}</td>
+                    <td>{{$data->qr_code}}</td>
                     @if ($data->sell_at == null)
-                    <td>Chưa bán</td> 
+                    <td>Chưa xuất chuồng</td>
                     @else
-                    <td>{{$data->sell_at}}</td> 
+                    <td>{{$data->sell_at}}</td>
                     @endif
-                    <td><a href="/breed-management/get-list-treatment/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/get-list-treatment/{{$data->id}}">Xem</a></td>
                   </tr>
                 </tbody>
             </table>

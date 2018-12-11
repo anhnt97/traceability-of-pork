@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/get-list-farm', 'HomeController@getListFarm')->name('glf');
 Route::get('/breed-management', 'HomeController@breed')->name('breed-management');
+Route::get('/flash-message', 'HomeController@breed')->name('flash-message');
 
 Route::get('/breed-management/get-batches/{batchId}', 'BreedManagementController@getListPigByBatch');
 Route::get('/breed-management/breed-info/{batchId}', 'BreedManagementController@getBreedInfo')->name('breed-info');
@@ -29,6 +30,10 @@ Route::get('/breed-management/feed/{batchId}', 'BreedManagementController@getFee
 Route::get('/breed-management/vaccination/{batchId}', 'BreedManagementController@getVaccination')->name('vaccination');
 Route::get('/breed-management/antiseptic/{batchId}', 'BreedManagementController@getAntiseptic')->name('antiseptic');
 Route::get('/breed-management/sell/{batchId}', 'BreedManagementController@getSell')->name('sell');
+Route::post('/breed-management/feeding', 'BreedManagementController@feeding')->name('feeding');
+Route::post('/breed-management/cleaning', 'BreedManagementController@cleaning')->name('cleaning');
+Route::post('/breed-management/vaccination', 'BreedManagementController@vaccination')->name('vaccination');
+Route::post('/breed-management/selling', 'BreedManagementController@selling')->name('selling');
 
 Route::get('/breed-management/get-info-pig/{pigId}', 'BreedManagementController@getInfoPigBasic');
 Route::get('/breed-management/treatment/{pigId}', 'BreedManagementController@getInfoTreatmentByPig')->name('treatment');

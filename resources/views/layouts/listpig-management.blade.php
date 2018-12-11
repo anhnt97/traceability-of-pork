@@ -38,22 +38,22 @@
                 <tbody>
                     @foreach($pigs as $data)
                     <tr>
-                    <td>{{$data->id}}</td> 
-                    <td>{{$data->weight}}</td> 
-                    <td>{{$data->status}}</td> 
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_QR">Xem</button></td> 
+                    <td>{{$data->id}}</td>
+                    <td>{{$data->weight}}</td>
+                    <td>{{$data->status}}</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_QR">Xem</button></td>
                     @if ($data->sell_at == null)
-                    <td>Chưa bán</td> 
+                    <td>Chưa bán</td>
                     @else
-                    <td>{{$data->sell_at}}</td> 
+                    <td>{{$data->sell_at}}</td>
                     @endif
                     @if(auth::user()->role =='admin')
-                    <td><a href="/breed-management/feed/{{$data->batch_id}}">Xem</a></td> 
-                    <td><a href="/breed-management/treatment/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/feed/{{$data->batch_id}}">Xem</a></td>
+                    <td><a href="/breed-management/treatment/{{$data->id}}">Xem</a></td>
                     @endif
                     @if(auth::user()->role =='staff')
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add">Nhập</button></td> 
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add_1">Nhập</button></td> 
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add">Nhập</button></td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add_1">Nhập</button></td>
                     @endif
                   </tr>
                   @endforeach
@@ -63,7 +63,7 @@
     </div>
 
     <!-- The Modal -->
-      
+
     <div class="modal fade" id="myModal_add" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -73,31 +73,37 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <table class="table">
-              <tbody>
-                  <th scope="row">Thức ăn</th>
-                  <td><input type="text"></td>
-                </tr>
-                <tr>
-                  <th scope="row">Số lượng(kg)</th>
-                  <td><input type="text"></td>
-                </tr>
-                <tr>
-                  <th scope="row">Trộn</th>
-                  <td><input type="text"></td>
-                </tr>
-                <tr>
-                  <th scope="row">Người cho ăn</th>
-                  <td><input type="text"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+            <form action="{{route('feeding')}}" method="post">
+                {{ csrf_field()}}
+                <div class="modal-body">
+                    <table class="table">
+                        <tbody>
+                        <th scope="row">Thức ăn</th>
+                        <td><input type="text" name="name" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Số lượng(kg)</th>
+                            <td><input type="text" name="mass" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Trộn</th>
+                            <td><input type="text" name="mix" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Người cho ăn</th>
+                            <td><input type="text" name="feeder" required></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                <input type="hidden" name="batch_id" value="1">
+                <input type="hidden" name="mix_id" value="1">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
       </div>
     </div>
@@ -111,35 +117,40 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            <table class="table">
-              <tbody>
-                  <th scope="row">Tên thuốc</th>
-                  <td><input type="text"></td>
-                </tr>
-                <tr>
-                  <th scope="row">Liều lượng</th>
-                  <td><input type="text"></td>
-                </tr>
-                <tr>
-                  <th scope="row">Bác sĩ thú y</th>
-                  <td><input type="text"></td>
-                </tr>
-                <tr>
-                  <th scope="row">Mục đích</th>
-                  <td><input type="text"></td>
-                </tr>
-                <tr>
-                  <th scope="row">Kết quả</th>
-                  <td><input type="text"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+            <form action="{{route('vaccination')}}" method="post">
+                {{ csrf_field()}}
+                <div class="modal-body">
+                    <table class="table">
+                        <tbody>
+                        <th scope="row">Tên thuốc</th>
+                        <td><input type="text" name="name" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Liều lượng</th>
+                            <td><input type="text" name="dose" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Bác sĩ thú y</th>
+                            <td><input type="text" name="doctor" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mục đích</th>
+                            <td><input type="text" name="purpose" required></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Kết quả</th>
+                            <td><input type="text" name="result" required></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
+                <input type="hidden" name="batch_id" value="1">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
       </div>
     </div>

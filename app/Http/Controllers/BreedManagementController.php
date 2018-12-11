@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Antiseptic;
+use App\Models\Feed;
 use App\Models\Food;
+use App\Models\Sell;
+use App\Models\Vaccination;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\Models\Activity;
 
 class BreedManagementController extends Controller
 {
@@ -69,18 +76,79 @@ class BreedManagementController extends Controller
         $sells = DB::table('sells')->where('batch_id','=',$batchId);
         return view('layouts.breed-management',['sells' => $sells]);
     }
-    public function createFood(Request $request){
-        $food =  Food::create([
+    public function feeding(Request $request){
+        $feed =  Feed::create([
             'name' => $request['name'],
-            '' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role' => 'user',
+            'mass' => $request['mass'],
+            'batch_id' => $request['batch_id'],
+            'mix_id' => $request['mix_id'],
+            'feeder' => $request['feeder']
         ]);
-        $activity = Activity::all()->last();
-
-        $activity->description; //returns 'created'
-        $activity->subject; //returns the instance of User that was created
-        $activity->changes;
-        return $user;
+        // create log
+        $log = "User ".Auth::user()->name." create feeding";
+        activity()
+            ->causedBy(auth()->user())
+            ->withProperties($feed)
+            ->log($log);
+        $lastActivity = Activity::all()->last();
+        $lastActivity->causer;
+        return back()->with('success','Cho ăn thành công!');
+    }
+    public function vaccination(Request $request){
+        $vaccination =  Vaccination::create([
+            'name' => $request['name'],
+            'dose' => $request['dose'],
+            'batch_id' => $request['batch_id'],
+            'doctor' => $request['doctor'],
+            'purpose' => $request['purpose'],
+            'result' => $request['result']
+        ]);
+        // create log
+        $log = "User ".Auth::user()->name." create vaccination";
+        activity()
+            ->causedBy(auth()->user())
+            ->withProperties($vaccination)
+            ->log($log);
+        $lastActivity = Activity::all()->last();
+        $lastActivity->causer;
+        return back()->with('success','Tiêm phòng thành công!');
+    }
+    public function cleaning(Request $request){
+        $antiseptic =  Antiseptic::create([
+            'equipment_id' => $request['equipment_id'],
+            'dose' => $request['dose'],
+            'batch_id' => $request['batch_id'],
+            'insecticide' => $request['insecticide'],
+            'executor' => $request['executor']
+        ]);
+        // create log
+        $log = "User ".Auth::user()->name." create cleaning";
+        activity()
+            ->causedBy(auth()->user())
+            ->withProperties($antiseptic)
+            ->log($log);
+        $lastActivity = Activity::all()->last();
+        $lastActivity->causer;
+        return back()->with('success','Dọn vệ sinh thành công!');
+    }
+    public function selling(Request $request){
+        $sell =  Sell::create([
+            'batch_id' => $request['batch_id'],
+            'amount' => $request['amount'],
+            'seller' => $request['seller'],
+            'buyer' => $request['buyer'],
+            'buyer_address' => $request['buyer_address'],
+            'last_treatment' => new Carbon('2018-01-23 11:53:20'),
+            'sell_at' => Carbon::now(),
+            ]);
+        // create log
+        $log = "User ".Auth::user()->name." create selling";
+        activity()
+            ->causedBy(auth()->user())
+            ->withProperties($sell)
+            ->log($log);
+        $lastActivity = Activity::all()->last();
+        $lastActivity->causer;
+        return back()->with('success','Bán thành công!');
     }
 }

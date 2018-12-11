@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Antiseptic extends Model
 {
+    protected $table = 'antiseptic';
     protected $fillable = [
-        'batch_id', 'dose', 'insectiside', 'executor',
+        'batch_id', 'dose', 'insecticide', 'executor','equipment_id','executor'
     ];
 
     public function batch()
