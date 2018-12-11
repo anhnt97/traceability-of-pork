@@ -13,11 +13,7 @@
 <div>
     <ul class="nav nav-tabs">
         <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Quản lí theo lô</a></li>
-        <li style="float: right;">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add">
-            Nhập nguyên liệu, thức ăn
-          </button>
-        </li>
+          
     </ul>
 
     <div class="tab-content">
@@ -26,13 +22,23 @@
                 <thead>
                     <tr>
                       <th scope="col">ID</th>
-                      <th scope="col">Farm ID</th>
+                      <th scope="col">Trang trại</th>
                       <th scope="col">Số lượng</th>
-                      <th scope="col">Trạng thái</th>
                       <th scope="col">Giống</th>
-                      <th scope="col">Mô tả giống</th>
-                      <th scope="col">Địa chỉ</th>
-                      <th scope="col">Chi tiết</th>
+                      @if(Auth::user()->role == 'admin')
+                      <th scope="col">Thông tin mua</th>
+                      <th scope="col">Lịch sử cho ăn</th>
+                      <th scope="col">Lịch sử tiêm phòng</th>
+                      <th scope="col">Lịch sử dọn vệ sinh</th>
+                      <th scope="col">Lịch sử bán</th>
+                      @endif 
+                      @if(Auth::user()->role == 'staff')
+                      <th scope="col">Cho ăn</th>
+                      <th scope="col">Tiêm phòng</th>
+                      <th scope="col">Dọn vệ sinh</th>
+                      <th scope="col">Bán</th>
+                      @endif
+                      <th scope="col">Danh sách heo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,11 +47,24 @@
                     <td>{{$data->id}}</td> 
                     <td>{{$data->farm_id}}</td> 
                     <td>{{$data->amount}}</td> 
-                    <td>{{$data->status}}</td> 
-                    <td>{{$data->breed}}</td> 
-                    <td>{{$data->breed_description}}</td> 
-                    <td>{{$data->origin}}</td> 
+                    
+                    @if(Auth::user()->role == 'admin')
                     <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td>
+                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
+                    @endif 
+                    @if(Auth::user()->role == 'staff')
+                    <td>{{$data->breed}}</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add">Nhập</button></td> 
+                    <td><a href="/breed-management/get-batches/{{$data->id}}">Nhập</a></td>
+                    <td><a href="/breed-management/get-batches/{{$data->id}}">Nhập</a></td> 
+                    <td><a href="/breed-management/get-batches/{{$data->id}}">Nhập</a></td> 
+                    @endif 
+                    <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
+
                   </tr>
                   @endforeach
                 </tbody>

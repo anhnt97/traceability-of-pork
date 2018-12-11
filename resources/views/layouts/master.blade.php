@@ -68,7 +68,7 @@
                     {{--<img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">--}}
                 {{--</div>--}}
                 <div class="info">
-                    <a href="#" class="d-block">Admin</a>
+                    <a href="#" class="d-block">{{Auth::user()->role}}</a>
                 </div>
             </div>
 
@@ -92,10 +92,11 @@
                             <p>Giới thiệu quy trình</p>
                         </a>
                     </li>
+                    @if(auth::user()->role == 'admin' || auth::user()->role == 'staff')
                     <li class="nav-item">
                          <a href="{{route('breed-management')}}" class="nav-link">
                             <i class="fa fa-circle-o nav-icon"></i>
-                            <p>Giám sát chăn nuôi</p>
+                            <p>Chăn nuôi</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -104,18 +105,14 @@
                             <p>Danh sách trang trại</p>
                         </a>
                     </li>
+                    @endif @if(auth::user()->role == 'admin')
                     <li class="nav-item">
-                         <a href="{{route('glfo')}}" class="nav-link">
+                         <a href="{{route('breed-management')}}" class="nav-link">
                             <i class="fa fa-circle-o nav-icon"></i>
-                            <p>Danh sách thức ăn</p>
+                            <p>Quản lý log</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                         <a href="{{route('gle')}}" class="nav-link">
-                            <i class="fa fa-circle-o nav-icon"></i>
-                            <p>Danh sách thiết bị</p>
-                        </a>
-                    </li>
+                    @endif
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

@@ -12,7 +12,7 @@
 </div>
 <div>
     <ul class="nav nav-tabs">
-        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Danh sách cá thể</a></li>
+        <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home">Danh sách chi tiết</a></li>
     </ul>
 
     <div class="tab-content">
@@ -25,7 +25,14 @@
                       <th scope="col">Tình trạng</th>
                       <th scope="col">Mã QR</th>
                       <th scope="col">Thời gian xuất chuồng</th>
-                      <th scope="col">Chi tiết</th>
+                      @if(auth::user()->role =='admin')
+                      <th scope="col">Lịch sử cho ăn </th>
+                      <th scope="col">Lịch sử chữa bệnh</th>
+                      @endif
+                      @if(auth::user()->role =='staff')
+                       <th scope="col"> Cho ăn </th>
+                      <th scope="col">Chữa bệnh</th>
+                      @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +47,14 @@
                     @else
                     <td>{{$data->sell_at}}</td> 
                     @endif
+                    @if(auth::user()->role =='admin')
                     <td><a href="/breed-management/get-info-pig/{{$data->id}}">Xem</a></td> 
+                    <td><a href="/breed-management/get-info-pig/{{$data->id}}">Xem</a></td> 
+                    @endif
+                    @if(auth::user()->role =='staff')
+                    <td><a href="/breed-management/get-info-pig/{{$data->id}}">Nhập</a></td> 
+                    <td><a href="/breed-management/get-info-pig/{{$data->id}}">Nhập</a></td> 
+                    @endif
                   </tr>
                   @endforeach
                 </tbody>
