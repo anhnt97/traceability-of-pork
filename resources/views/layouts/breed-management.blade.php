@@ -59,9 +59,9 @@
                     @if(Auth::user()->role == 'staff')
                     <td>{{$data->breed}}</td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add">Nhập</button></td> 
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Nhập</a></td>
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Nhập</a></td> 
-                    <td><a href="/breed-management/get-batches/{{$data->id}}">Nhập</a></td> 
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add_1">Nhập</button></td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add_2">Nhập</button></td> 
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_add_3">Nhập</button></td> 
                     @endif 
                     <td><a href="/breed-management/get-batches/{{$data->id}}">Xem</a></td> 
 
@@ -78,7 +78,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Nguyên Liệu/Thức ăn</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Thức ăn</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -86,18 +86,7 @@
           <div class="modal-body">
             <table class="table">
               <tbody>
-                <tr>
-                  <th scope="row">Ngày nhập</th>
-                  <td>
-                    <input type="text">
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Người nhập</th>
-                  <td><input type="text"></td>
-                </tr>
-                <tr>
-                  <th scope="row">Tên hàng</th>
+                  <th scope="row">Thức ăn</th>
                   <td><input type="text"></td>
                 </tr>
                 <tr>
@@ -105,19 +94,129 @@
                   <td><input type="text"></td>
                 </tr>
                 <tr>
-                  <th scope="row">Cơ sở sản xuất</th>
+                  <th scope="row">Trộn</th>
                   <td><input type="text"></td>
                 </tr>
                 <tr>
-                  <th scope="row">Ngày sản xuất</th>
+                  <th scope="row">Người cho ăn</th>
+                  <td><input type="text"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal_add_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Tiêm phòng</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <tbody>
+                  <th scope="row">Tên thuốc</th>
                   <td><input type="text"></td>
                 </tr>
                 <tr>
-                  <th scope="row">Hạn sử dụng</th>
+                  <th scope="row">Liều lượng</th>
                   <td><input type="text"></td>
                 </tr>
                 <tr>
-                  <th scope="row">Đánh giá</th>
+                  <th scope="row">Bác sĩ thú y</th>
+                  <td><input type="text"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Mục đích</th>
+                  <td><input type="text"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Kết quả</th>
+                  <td><input type="text"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal_add_2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Dọn vệ sinh</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <tbody>
+                  <th scope="row">Trang bị</th>
+                  <td><input type="text"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Số lượng</th>
+                  <td><input type="text"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Chất tẩy rửa</th>
+                  <td><input type="text"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Người thực hiện</th>
+                  <td><input type="text"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="myModal_add_3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Bán</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <tbody>
+                  <th scope="row">Số lượng</th>
+                  <td><input type="text"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Người bán</th>
+                  <td><input type="text"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Người mua</th>
+                  <td><input type="text"></td>
+                </tr>
+                <tr>
+                  <th scope="row">Địa chỉ người mua</th>
                   <td><input type="text"></td>
                 </tr>
               </tbody>
