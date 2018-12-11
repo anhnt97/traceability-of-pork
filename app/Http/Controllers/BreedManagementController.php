@@ -42,8 +42,8 @@ class BreedManagementController extends Controller
         return view('layouts.listpig-management',['pigs' => $pigs]);
     }
     public function getInfoTreatmentByPig($pigId){
-        $treatments = DB::table('treatments')->where('pig_id','=', $pigId);
-        return view('layouts.breed-management',['treatments' => $treatments]);
+        $treatments = DB::table('treatments')->where('pig_id','=', $pigId)->paginate(15);
+        return view('layouts.treatment',['treatments' => $treatments]);
     }
     public function getInfoPigBasic($pigId){
         $pigInfo = DB::table('pigs')->where('id','=', $pigId)->first();

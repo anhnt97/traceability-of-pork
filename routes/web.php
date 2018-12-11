@@ -31,7 +31,7 @@ Route::get('/breed-management/antiseptic/{batchId}', 'BreedManagementController@
 Route::get('/breed-management/sell/{batchId}', 'BreedManagementController@getSell')->name('sell');
 
 Route::get('/breed-management/get-info-pig/{pigId}', 'BreedManagementController@getInfoPigBasic');
-Route::get('/breed-management/get-info-treatment/{pigId}', 'BreedManagementController@getInfoTreatmentByPig');
+Route::get('/breed-management/treatment/{pigId}', 'BreedManagementController@getInfoTreatmentByPig')->name('treatment');
 Route::get('/breed-management/get-list-equipment', 'BreedManagementController@getListEquipment')->name('gle');
 Route::get('/breed-management/get-list-food', 'BreedManagementController@getListFood')->name('glfo');
 Route::get('/process-management', 'HomeController@process')->name('process-management');
