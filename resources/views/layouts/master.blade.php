@@ -107,7 +107,7 @@
                     </li>
                     @endif @if(auth::user()->role == 'admin')
                     <li class="nav-item">
-                         <a href="{{route('breed-management')}}" class="nav-link">
+                         <a href="{{route('activity-log')}}" class="nav-link">
                             <i class="fa fa-circle-o nav-icon"></i>
                             <p>Quản lý log</p>
                         </a>
